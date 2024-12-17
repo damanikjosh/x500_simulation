@@ -1,0 +1,18 @@
+services:
+  x500:
+    build: .
+    container_name: x500
+    runtime: nvidia # Comment this line if you are not using an NVIDIA GPU
+    environment:
+      - DISPLAY=$DISPLAY
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - __NV_PRIME_RENDER_OFFLOAD=1
+      - __GLX_VENDOR_LIBRARY_NAME=nvidia
+      - __VK_LAYER_NV_optimus=NVIDIA_only
+      - VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
+      - __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    network_mode: host
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    command: ros2 launch x500_bringup x500.launch.py

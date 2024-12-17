@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model xmlns:xacro="http://www.ros.org/wiki/xacro" name='x500'>
+    <xacro:include filename="$(find x500_description)/models/x500/model.xacro" />
+  </model>
+</sdf>
